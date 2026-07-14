@@ -32,7 +32,7 @@ const Scene = () => {
         antialias: true,
       });
       renderer.setSize(container.width, container.height);
-      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
       canvasDiv.current.appendChild(renderer.domElement);
@@ -67,7 +67,7 @@ const Scene = () => {
             setTimeout(() => {
               light.turnOnLights();
               animations.startIntro();
-            }, 2500);
+            }, 800);
           });
           window.addEventListener("resize", () =>
             handleResize(renderer, camera, canvasDiv, character)
