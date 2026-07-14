@@ -5,6 +5,10 @@
     <!-- <link rel="icon" type="image/svg+xml" href="/" /> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nishant Chopra</title>
+    <!-- Preload heavy 3D assets so browser starts downloading immediately -->
+    <link rel="preload" href="/models/character.glb" as="fetch" crossorigin />
+    <link rel="preload" href="/models/char_enviorment.hdr" as="fetch" crossorigin />
+    <link rel="preload" href="/draco/draco_decoder.wasm" as="fetch" crossorigin />
   </head>
   <body>
     <div id="root"></div>
