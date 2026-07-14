@@ -95,23 +95,16 @@ export default Loading;
 export const setProgress = (setLoading: (value: number) => void) => {
   let percent: number = 0;
 
+  // Quick ramp to ~95% in about 3 seconds
   let interval = setInterval(() => {
-    if (percent <= 60) {
-      let rand = Math.round(Math.random() * 6) + 2;
-      percent = Math.min(percent + rand, 60);
+    if (percent < 95) {
+      let rand = Math.round(Math.random() * 5) + 3;
+      percent = Math.min(percent + rand, 95);
       setLoading(percent);
     } else {
       clearInterval(interval);
-      interval = setInterval(() => {
-        if (percent < 95) {
-          percent = percent + 1;
-          setLoading(percent);
-        } else {
-          clearInterval(interval);
-        }
-      }, 500);
     }
-  }, 80);
+  }, 100);
 
   function clear() {
     clearInterval(interval);

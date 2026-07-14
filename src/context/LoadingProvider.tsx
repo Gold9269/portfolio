@@ -19,6 +19,14 @@ export const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [isLoading, setIsLoading] = useState(true);
   const [loading, setLoading] = useState(0);
 
+  // Auto-dismiss loading screen after 4 seconds max, even if model isn't ready
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(100);
+    }, 4000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   const value = {
     isLoading,
     setIsLoading,
